@@ -44,5 +44,5 @@ API documentation: https://github.com/jolpica/jolpica-f1/blob/main/docs/endpoint
 
 ## Hosting
 
-Repository: https://github.com/DikiyAsset/Assignment2WEBAssetRoma
-Website: https://dikiyasset.github.io/Assignment2WEBAssetRoma/
+Repository: https://github.com/DikiyAsset/gridline-f1
+Website: https://dikiyasset.github.io/gridline-f1/
