@@ -31,7 +31,8 @@ MediaQueries.html is a compatibility redirect, not a content page.
 1. CSS Grid/Flexbox/Bootstrap, collapsible navigation, mobile calendar cards.
 2. Existing GitHub Pages publication from `main`, root `/`; `.nojekyll` included.
 3. Persisted sun/moon switch after Contacts in the header, early application and cross-tab updates.
-4. Red/lime photographic homepage, Gridline headings, readable Segoe UI body text and accessible controls.
+4. Cinematic Ferrari homepage, graphite/white surfaces, precise red accents,
+   readable system typography, a Gridline wordmark and accessible controls.
 5. Custom validation; registration/login/profile; instant driver search, saved
    query, and account-specific liked drivers.
 6. Hover feedback, FAQ transitions and reduced-motion support.
