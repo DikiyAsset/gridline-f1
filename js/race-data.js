@@ -1,4 +1,3 @@
-/* Jolpica supplies scheduled races, not live timing or race results. */
 (function () {
   'use strict';
 

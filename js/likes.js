@@ -1,4 +1,3 @@
-/* Driver likes belong to the signed-in account and follow it across pages. */
 (() => {
   'use strict';
   const api = window.GridlineAccount;

@@ -1,4 +1,3 @@
-/* Browser-local fan accounts. This is a front-end simulation, not server authentication. */
 (() => {
   'use strict';
 
