@@ -83,6 +83,25 @@
     return { race: upcoming || races[races.length - 1], upcoming: Boolean(upcoming) };
   }
 
+  // Count only toward a confirmed API time. An unknown time must not become midnight.
+  function raceCountdown(race, now = Date.now()) {
+    if (!validDate(race?.date)) return { state: 'unconfirmed' };
+    if (!validTime(race?.time)) {
+      return { state: Date.parse(`${race.date}T23:59:59Z`) < now ? 'date-passed' : 'unconfirmed' };
+    }
+    const remaining = sessionTimestamp(race) - now;
+    if (remaining <= 0) return { state: 'passed' };
+    const totalMinutes = Math.ceil(remaining / 60000);
+    return {
+      state: 'upcoming', days: Math.floor(totalMinutes / 1440),
+      hours: Math.floor(totalMinutes / 60) % 24, minutes: totalMinutes % 60
+    };
+  }
+
+  function nextSession(sessions, now = Date.now()) {
+    return sessions.find((session) => validTime(session.time) && sessionTimestamp(session) > now) || null;
+  }
+
   async function fetchCalendar(fetchFunction, signal) {
     const response = await fetchFunction(API_URL, { signal, headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error(`The race service returned ${response.status}.`);
@@ -101,7 +120,7 @@
 
   // Export the data rules for Node's built-in tests without starting browser code.
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { normalizeRaces, selectRace, sessionTimestamp, fetchCalendar, decodeCache, API_URL, CACHE_KEY };
+    module.exports = { normalizeRaces, selectRace, sessionTimestamp, raceCountdown, nextSession, fetchCalendar, decodeCache, API_URL, CACHE_KEY };
   }
   if (typeof document === 'undefined') return;
   const content = document.getElementById('race-api-content');
@@ -169,26 +188,87 @@
     calendarNote(note);
   }
 
+  let countdownTimer = null;
   function render(races, savedAt, cached) {
+    if (countdownTimer !== null) clearInterval(countdownTimer);
     const { race, upcoming } = selectRace(races);
     const card = element('article', '', 'race-weekend-card');
     const summary = element('div', '', 'race-weekend-summary');
-    summary.append(element('p', `ROUND ${race.round} / ${SEASON}`, 'hero-eyebrow'));
+    const round = element('div', '', 'race-round-heading');
+    round.append(element('span', String(race.round).padStart(2, '0'), 'race-round-number'));
+    const roundDetails = element('div');
+    roundDetails.append(element('p', `ROUND ${race.round} / ${SEASON}`, 'race-round-label'));
+    roundDetails.append(element('p', upcoming ? 'Next scheduled race' : 'Final scheduled race of the season', 'race-badge'));
+    round.append(roundDetails);
+    summary.append(round);
     summary.append(element('h3', race.name));
     summary.append(element('p', race.circuit, 'race-circuit'));
     summary.append(element('p', [race.locality, race.country].filter(Boolean).join(', '), 'race-location'));
-    summary.append(element('p', upcoming ? 'Next scheduled race' : 'Final scheduled race of the season', 'race-badge'));
+    const raceDate = element('time', formatSession(race), 'race-start-date');
+    raceDate.dateTime = `${race.date}${race.time ? `T${race.time}` : ''}`;
+    summary.append(raceDate);
+
+    const countdown = element('div', '', 'race-countdown');
+    countdown.setAttribute('role', 'group');
+    const countdownLabel = element('p', '', 'race-countdown-label');
+    const values = element('div', '', 'race-countdown-values');
+    const counters = ['days', 'hours', 'minutes'].map((unit) => {
+      const cell = element('div');
+      const number = element('strong', '00');
+      cell.append(number, element('span', unit));
+      values.append(cell);
+      return { unit, number };
+    });
+    countdown.append(countdownLabel, values);
+    summary.append(countdown);
+
+    const sessionsPanel = element('div', '', 'race-sessions-panel');
+    const sessionsHeader = element('div', '', 'race-sessions-header');
+    sessionsHeader.append(element('h4', 'Weekend sessions'));
+    sessionsHeader.append(element('p', 'Times in your local time zone'));
     const schedule = element('ol', '', 'race-session-list');
-    race.sessions.forEach((session) => {
-      const row = element('li');
-      row.append(element('span', session.name, 'race-session-name'));
+    const sessionRows = race.sessions.map((session) => {
+      const row = element('li', '', 'race-session');
+      const heading = element('div', '', 'race-session-heading');
+      heading.append(element('span', session.name, 'race-session-name'));
+      const badge = element('span', '', 'race-session-status');
+      heading.append(badge);
+      row.append(heading);
       const time = element('time', formatSession(session));
       time.dateTime = `${session.date}${session.time ? `T${session.time}` : ''}`;
       row.append(time);
       schedule.append(row);
+      return { session, row, badge };
     });
-    card.append(summary, schedule);
+    sessionsPanel.append(sessionsHeader, schedule);
+    card.append(summary, sessionsPanel);
     content.replaceChildren(card);
+
+    function updateClock() {
+      const now = Date.now();
+      const clock = raceCountdown(race, now);
+      values.hidden = clock.state !== 'upcoming';
+      countdownLabel.textContent = clock.state === 'upcoming' ? 'Until the scheduled Grand Prix start' :
+        clock.state === 'unconfirmed' ? 'Countdown available when the start time is confirmed' :
+          clock.state === 'date-passed' ? 'Scheduled race date has passed. Refresh for the next race.' :
+            'Scheduled start time has passed. Refresh for the next race.';
+      counters.forEach(({ unit, number }) => { number.textContent = String(clock[unit] || 0).padStart(2, '0'); });
+      countdown.setAttribute('aria-label', clock.state === 'upcoming' ?
+        `${clock.days} days, ${clock.hours} hours, ${clock.minutes} minutes until the scheduled Grand Prix start` : countdownLabel.textContent);
+      const next = nextSession(race.sessions, now);
+      sessionRows.forEach(({ session, row, badge }) => {
+        const passed = Boolean(session.time && sessionTimestamp(session) <= now);
+        row.className = `race-session${session === next ? ' is-next' : ''}${passed ? ' is-past' : ''}${session.name === 'Grand Prix' ? ' is-grand-prix' : ''}`;
+        badge.textContent = session === next ? 'Up next' : passed ? 'Scheduled time passed' : '';
+        badge.hidden = !badge.textContent;
+      });
+      if (clock.state !== 'upcoming' && countdownTimer !== null) {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+      }
+    }
+    updateClock();
+    if (raceCountdown(race).state === 'upcoming') countdownTimer = setInterval(updateClock, 60000);
     const updated = updatedDateTime.format(new Date(savedAt));
     renderTable(races, `${cached ? 'Saved' : 'Updated'} ${SEASON} calendar from Jolpica F1 · ${updated}. Dates may change.`);
     const reminder = document.getElementById('calendar-snippet');

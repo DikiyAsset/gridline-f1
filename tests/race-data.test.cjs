@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { normalizeRaces, selectRace, sessionTimestamp, fetchCalendar, decodeCache, API_URL } = require('../js/race-data.js');
+const { normalizeRaces, selectRace, sessionTimestamp, raceCountdown, nextSession, fetchCalendar, decodeCache, API_URL } = require('../js/race-data.js');
 
 function race(round, date, overrides = {}) {
   return {
@@ -66,6 +66,37 @@ test('selects next race by schedule, and final scheduled race after season ends'
 test('an unknown race start time remains eligible on its scheduled UTC date', () => {
   const races = normalizeRaces(payload([race(1, '2026-03-08', { time: undefined })]));
   assert.equal(selectRace(races, Date.parse('2026-03-08T18:00:00Z')).upcoming, true);
+});
+
+test('countdown uses the confirmed UTC start and crosses day boundaries correctly', () => {
+  const event = { date: '2026-11-22', time: '04:00:00Z' };
+  assert.deepEqual(raceCountdown(event, Date.parse('2026-11-21T01:56:00Z')),
+    { state: 'upcoming', days: 1, hours: 2, minutes: 4 });
+  assert.deepEqual(raceCountdown(event, Date.parse('2026-11-22T03:59:59Z')),
+    { state: 'upcoming', days: 0, hours: 0, minutes: 1 });
+  assert.deepEqual(raceCountdown(event, Date.parse('2026-11-21T04:00:00Z')),
+    { state: 'upcoming', days: 1, hours: 0, minutes: 0 });
+});
+
+test('unknown, invalid and already passed start times never produce a fake countdown', () => {
+  const before = Date.parse('2026-11-18T10:00:00Z');
+  assert.deepEqual(raceCountdown({ date: '2026-11-22', time: null }, before), { state: 'unconfirmed' });
+  assert.deepEqual(raceCountdown({ date: '2026-11-22', time: '25:00:00Z' }, before), { state: 'unconfirmed' });
+  assert.deepEqual(raceCountdown({ date: '2026-02-30', time: '04:00:00Z' }), { state: 'unconfirmed' });
+  assert.deepEqual(raceCountdown({ date: '2026-11-22', time: '04:00:00Z' }, Date.parse('2026-11-22T04:00:00Z')), { state: 'passed' });
+  assert.deepEqual(raceCountdown({ date: '2026-11-22', time: '04:00:00Z' }, Date.parse('2026-12-31T04:00:00Z')), { state: 'passed' });
+  assert.deepEqual(raceCountdown({ date: '2026-11-22', time: null }, Date.parse('2026-12-31T04:00:00Z')), { state: 'date-passed' });
+});
+
+test('up-next session excludes unknown times and moves forward at scheduled boundaries', () => {
+  const sessions = [
+    { name: 'Practice', date: '2026-11-20', time: null },
+    { name: 'Qualifying', date: '2026-11-21', time: '04:00:00Z' },
+    { name: 'Grand Prix', date: '2026-11-22', time: '04:00:00Z' }
+  ];
+  assert.equal(nextSession(sessions, Date.parse('2026-11-20T12:00:00Z')).name, 'Qualifying');
+  assert.equal(nextSession(sessions, Date.parse('2026-11-21T04:00:00Z')).name, 'Grand Prix');
+  assert.equal(nextSession(sessions, Date.parse('2026-11-22T04:00:00Z')), null);
 });
 
 test('fetch uses the documented URL, JSON header and abort signal', async () => {

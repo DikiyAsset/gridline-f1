@@ -6,17 +6,18 @@
   <meta name="description" content="Grid Line: an independent Formula 1 fan hub with drivers, race dates, a fan guide and your favorite drivers.">
   <title>Drivers | Grid Line</title>
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css?v=final-1">
+  <link rel="stylesheet" href="css/style.css?v=bright-1">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="css/account.css?v=final-1">
-  <script src="js/drivers-data.js?v=final-1" defer></script>
-  <script src="js/account.js?v=final-1" defer></script>
-  <script src="js/script.js?v=final-1" defer></script>
-  <script src="js/likes.js?v=final-1" defer></script>
+  <script src="js/theme.js?v=bright-1"></script>
+  <link rel="stylesheet" href="css/account.css?v=bright-1">
+  <script src="js/drivers-data.js?v=bright-1" defer></script>
+  <script src="js/account.js?v=bright-1" defer></script>
+  <script src="js/script.js?v=bright-1" defer></script>
+  <script src="js/likes.js?v=bright-1" defer></script>
   <link rel="icon" type="image/png" href="Images/F1.png">
+  <link rel="stylesheet" href="css/visual.css?v=bright-1">
 </head>
-<body>
+<body class="page-drivers">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
   <div id="site-notification" role="status" aria-live="polite"></div>
@@ -28,16 +29,23 @@
           <img src="Images/F1.png" alt="Grid Line Logo" class="logo-image">
           <span class="logo-text">GRID<span class="logo-accent">LINE</span></span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
         <div class="nav-menu collapse navbar-collapse flex-grow-0" id="primaryNav">
           <ul class="navbar-nav">
-          <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
-          <li class="nav-item"><a href="Drivers.html" class="nav-link active" aria-current="page">DRIVERS</a></li>
-          <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
-          <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
-          <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
-          <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+            <li class="nav-item"><a href="Drivers.html" class="nav-link active" aria-current="page">DRIVERS</a></li>
+            <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
+            <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
+            <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
+            <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
           </ul>
+        </div>
+        <div class="header-actions">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <button type="button" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode" title="Switch appearance">
+              <span class="theme-icon theme-sun" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></span>
+              <span class="theme-icon theme-moon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5 8.8 8.8 0 1 0 20.5 14.2Z"/></svg></span>
+            </button>
         </div>
       </div>
     </nav>
@@ -64,72 +72,72 @@
     </section>
 
     <section class="gallery" aria-label="Drivers">
-      <figure class="gallery-item" data-driver-id="norris">
+      <figure class="gallery-item" data-driver-id="norris" data-team="mclaren">
         <img src="Images/Norris.png" alt="Lando Norris" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="norris" aria-pressed="false" aria-label="Like Lando Norris"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Lando Norris</h3><p>McLaren · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="piastri">
+      <figure class="gallery-item" data-driver-id="piastri" data-team="mclaren">
         <img src="Images/Piastri.png" alt="Oscar Piastri" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="piastri" aria-pressed="false" aria-label="Like Oscar Piastri"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Oscar Piastri</h3><p>McLaren · Australia</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="leclerc">
+      <figure class="gallery-item" data-driver-id="leclerc" data-team="ferrari">
         <img src="Images/Leclerc.png" alt="Charles Leclerc" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="leclerc" aria-pressed="false" aria-label="Like Charles Leclerc"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Charles Leclerc</h3><p>Ferrari · Monaco</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="hamilton">
+      <figure class="gallery-item" data-driver-id="hamilton" data-team="ferrari">
         <img src="Images/Hamilton.png" alt="Lewis Hamilton" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="hamilton" aria-pressed="false" aria-label="Like Lewis Hamilton"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Lewis Hamilton</h3><p>Ferrari · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="russell">
+      <figure class="gallery-item" data-driver-id="russell" data-team="mercedes">
         <img src="Images/Russell.png" alt="George Russell" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="russell" aria-pressed="false" aria-label="Like George Russell"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>George Russell</h3><p>Mercedes · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="antonelli">
+      <figure class="gallery-item" data-driver-id="antonelli" data-team="mercedes">
         <img src="Images/antonelli.png" alt="Kimi Antonelli" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="antonelli" aria-pressed="false" aria-label="Like Kimi Antonelli"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Kimi Antonelli</h3><p>Mercedes · Italy</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="verstappen">
+      <figure class="gallery-item" data-driver-id="verstappen" data-team="red-bull">
         <img src="Images/verstappen.png" alt="Max Verstappen" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="verstappen" aria-pressed="false" aria-label="Like Max Verstappen"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Max Verstappen</h3><p>Red Bull · Netherlands</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="hadjar">
+      <figure class="gallery-item" data-driver-id="hadjar" data-team="red-bull">
         <img src="Images/hadjar.png" alt="Isack Hadjar" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="hadjar" aria-pressed="false" aria-label="Like Isack Hadjar"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Isack Hadjar</h3><p>Red Bull · France</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="alonso">
+      <figure class="gallery-item" data-driver-id="alonso" data-team="aston-martin">
         <img src="Images/Alonso.png" alt="Fernando Alonso" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="alonso" aria-pressed="false" aria-label="Like Fernando Alonso"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Fernando Alonso</h3><p>Aston Martin · Spain</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="stroll">
+      <figure class="gallery-item" data-driver-id="stroll" data-team="aston-martin">
         <img src="Images/Stroll.png" alt="Lance Stroll" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="stroll" aria-pressed="false" aria-label="Like Lance Stroll"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Lance Stroll</h3><p>Aston Martin · Canada</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="bottas">
+      <figure class="gallery-item" data-driver-id="bottas" data-team="cadillac">
         <img src="Images/valterri.png" alt="Valtteri Bottas" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="bottas" aria-pressed="false" aria-label="Like Valtteri Bottas"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Valtteri Bottas</h3><p>Cadillac · Finland</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="perez">
+      <figure class="gallery-item" data-driver-id="perez" data-team="cadillac">
         <img src="Images/peres.png" alt="Sergio Perez" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="perez" aria-pressed="false" aria-label="Like Sergio Perez"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Sergio Perez</h3><p>Cadillac · Mexico</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="lawson">
+      <figure class="gallery-item" data-driver-id="lawson" data-team="racing-bulls">
         <img src="Images/lawson.png" alt="Liam Lawson" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="lawson" aria-pressed="false" aria-label="Like Liam Lawson"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Liam Lawson</h3><p>Racing Bulls · New Zealand</p></figcaption>
       </figure>
-      <figure class="gallery-item" data-driver-id="lindblad">
+      <figure class="gallery-item" data-driver-id="lindblad" data-team="racing-bulls">
         <img src="Images/lindblad.png" alt="Arvid Lindblad" loading="lazy">
         <button type="button" class="driver-like" data-like-driver="lindblad" aria-pressed="false" aria-label="Like Arvid Lindblad"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
         <figcaption><h3>Arvid Lindblad</h3><p>Racing Bulls · United Kingdom</p></figcaption>
@@ -223,7 +231,6 @@
   <footer>
     <p>Created by Asset, Ramazan</p>
   <div class="site-tools" aria-label="Website tools">
-      <button type="button" class="btn btn-outline-light" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode"><span class="theme-switch" aria-hidden="true"></span> Dark mode</button>
       <button type="button" class="btn btn-danger" id="subscribe-open">Race preferences</button>
       <a class="footer-link" href="Schedule.html">Explore the race calendar &rarr;</a>
     </div></footer>

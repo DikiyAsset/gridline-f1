@@ -85,10 +85,12 @@ function createPage({ fetchResponse, cache, blockedStorage = false, missingMarku
   };
   const requests = [];
   const timers = new Map();
+  const intervals = new Map();
+  let currentTime = NOW;
   let nextTimer = 0;
   class FixedDate extends Date {
-    constructor(...args) { super(...(args.length ? args : [NOW])); }
-    static now() { return NOW; }
+    constructor(...args) { super(...(args.length ? args : [currentTime])); }
+    static now() { return currentTime; }
   }
   vm.runInNewContext(source, {
     document, localStorage, Date: FixedDate, Intl, AbortController,
@@ -97,9 +99,16 @@ function createPage({ fetchResponse, cache, blockedStorage = false, missingMarku
       return fetchResponse(requests.length, url, options);
     },
     setTimeout(callback, delay) { const id = ++nextTimer; timers.set(id, { callback, delay }); return id; },
-    clearTimeout(id) { timers.delete(id); }
+    clearTimeout(id) { timers.delete(id); },
+    setInterval(callback, delay) { const id = ++nextTimer; intervals.set(id, { callback, delay }); return id; },
+    clearInterval(id) { intervals.delete(id); }
   }, { filename: 'race-data.js' });
-  return { document, content, status, refresh, reminder, tbody, publishedRow, storage, requests, timers };
+  return { document, content, status, refresh, reminder, tbody, publishedRow, storage, requests, timers, intervals,
+    setTime(value) { currentTime = value; [...intervals.values()].forEach(({ callback }) => callback()); } };
+}
+
+function descendants(node, predicate) {
+  return [...(predicate(node) ? [node] : []), ...node.children.flatMap((child) => descendants(child, predicate))];
 }
 
 test('shows loading state and keeps the published calendar until a real response succeeds', async () => {
@@ -217,4 +226,46 @@ test('API labels are rendered as text and the module is harmless on pages withou
   const absent = createPage({ missingMarkup: true, fetchResponse: () => { throw new Error('Must not fetch'); } });
   assert.equal(absent.requests.length, 0);
   assert.equal(absent.timers.size, 0);
+});
+
+test('race center shows a real countdown and moves the next-session state without another API call', async () => {
+  const page = createPage({ fetchResponse: async () => ok() });
+  await flush();
+  const clock = descendants(page.content, (node) => node.className === 'race-countdown')[0];
+  assert.match(clock.getAttribute('aria-label'), /3 days, 18 hours, 0 minutes/);
+  assert.equal(page.intervals.size, 1);
+  assert.equal([...page.intervals.values()][0].delay, 60000);
+  let next = descendants(page.content, (node) => node.className.includes('is-next'));
+  assert.equal(next.length, 1);
+  assert.match(next[0].textContent, /Practice 1/);
+
+  page.setTime(Date.parse('2026-11-21T04:00:00Z'));
+  next = descendants(page.content, (node) => node.className.includes('is-next'));
+  assert.match(next[0].textContent, /Grand Prix/);
+  assert.equal(descendants(page.content, (node) => node.className.includes('is-past')).length, 2);
+  assert.equal(page.requests.length, 1, 'clock updates do not poll the API');
+
+  page.setTime(Date.parse('2026-11-22T04:00:00Z'));
+  assert.match(clock.textContent, /Scheduled start time has passed/);
+  assert.equal(descendants(clock, (node) => node.className === 'race-countdown-values')[0].hidden, true);
+  assert.equal(page.intervals.size, 0);
+  assert.equal(descendants(page.content, (node) => node.className.includes('is-next')).length, 0);
+});
+
+test('refresh replaces a single countdown timer and unknown race times do not invent one', async () => {
+  const page = createPage({ fetchResponse: async () => ok() });
+  await flush();
+  const oldTimer = [...page.intervals.keys()][0];
+  await page.refresh.click();
+  assert.equal(page.intervals.size, 1);
+  assert.equal(page.intervals.has(oldTimer), false);
+
+  const unknownPayload = fixturePayload();
+  delete unknownPayload.MRData.RaceTable.Races[0].time;
+  const unknown = createPage({ fetchResponse: async () => ok(unknownPayload) });
+  await flush();
+  assert.match(unknown.content.textContent, /Countdown available when the start time is confirmed/);
+  assert.equal(unknown.intervals.size, 0);
+  const values = descendants(unknown.content, (node) => node.className === 'race-countdown-values')[0];
+  assert.equal(values.hidden, true);
 });

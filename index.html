@@ -7,17 +7,19 @@
   <title>Grid Line | Formula 1 fan hub</title>
 
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css?v=final-1">
+  <link rel="stylesheet" href="css/style.css?v=bright-1">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
 
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="css/account.css?v=final-1">
-  <script src="js/drivers-data.js?v=final-1" defer></script>
-  <script src="js/account.js?v=final-1" defer></script>
-  <script src="js/script.js?v=final-1" defer></script>
+  <script src="js/theme.js?v=bright-1"></script>
+  <link rel="stylesheet" href="css/account.css?v=bright-1">
+  <script src="js/drivers-data.js?v=bright-1" defer></script>
+  <script src="js/account.js?v=bright-1" defer></script>
+  <script src="js/script.js?v=bright-1" defer></script>
   <link rel="icon" type="image/png" href="Images/F1.png">
+  <link rel="stylesheet" href="css/visual.css?v=bright-1">
+  <link rel="stylesheet" href="css/home.css?v=bright-1">
 </head>
-<body>
+<body class="page-home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
   <div id="site-notification" role="status" aria-live="polite"></div>
@@ -29,133 +31,100 @@
           <img src="Images/F1.png" alt="Grid Line Logo" class="logo-image">
           <span class="logo-text">GRID<span class="logo-accent">LINE</span></span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        
         <div class="nav-menu collapse navbar-collapse flex-grow-0" id="primaryNav">
           <ul class="navbar-nav">
-          <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">HOME</a></li>
-          <li class="nav-item"><a href="Drivers.html" class="nav-link">DRIVERS</a></li>
-          <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
-          <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
-          <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
-          <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">HOME</a></li>
+            <li class="nav-item"><a href="Drivers.html" class="nav-link">DRIVERS</a></li>
+            <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
+            <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
+            <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
+            <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
           </ul>
+        </div>
+        <div class="header-actions">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <button type="button" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode" title="Switch appearance">
+              <span class="theme-icon theme-sun" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></span>
+              <span class="theme-icon theme-moon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5 8.8 8.8 0 1 0 20.5 14.2Z"/></svg></span>
+            </button>
         </div>
       </div>
     </nav>
   </header>
 
-  <main id="main-content">
-    <section class="hero">
-      <video autoplay muted playsinline loop aria-label="Formula 1 racing footage" class="hero-video">
-        <source src="Images/NewferVideo.mp4" type="video/mp4">
-      </video>
-      <div class="hero-text">
-        <p class="hero-eyebrow">Season 2026</p>
-        <h1>The race<br>begins.</h1>
-        <p class="hero-sub">Grid Line is an unofficial F1 fan site with information
-       about drivers, teams, races, and the 2026 season.
-        </p>
-        <a href="Schedule.html" class="btn btn-primary btn-lg">View race calendar</a>
+<main id="main-content" class="home-page">
+    <section class="hero home-hero" aria-labelledby="home-title">
+      <div class="hero-text home-hero-copy">
+        <p class="hero-eyebrow home-season-tag"><span aria-hidden="true"></span> Formula 1. For the fans.</p>
+        <h1 id="home-title">Closer to<br><span>the grid.</span></h1>
+        <p class="hero-sub">The drivers you follow. The weekends you live for. Your own corner of the Formula 1 world.</p>
+        <div class="home-hero-actions">
+          <a href="Schedule.html" class="btn home-primary-action">Explore the calendar <span aria-hidden="true">↗</span></a>
+          <a href="Drivers.html" class="btn home-secondary-action">Meet the drivers <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="home-independent">An independent fan site by Asset &amp; Ramazan.</p>
+      </div>
+      <div class="home-hero-art">
+        <img src="Images/newfer.jpg" alt="A red Ferrari Formula 1 car on an illuminated racing display" class="home-hero-photo" fetchpriority="high">
+        <div class="home-art-topline"><span>GRID LINE / 2026</span><span class="home-art-badge">ALL IN FOR F1</span></div>
+        <div class="home-art-caption"><p>More than a race.</p><h2>A whole world<br>to follow.</h2></div>
       </div>
     </section>
 
-    <section class="feature-grid">
-      <article class="feature-card">
-        <img data-src="Images/Driveri.jpg" alt="New regulations" class="feature-img">
-        <h2>New Technical Regulations</h2>
-        <p>The 2026 season brings new aerodynamics, revised hybrid power units, and sustainable fuel.</p>
-        <a href="Drivers.html" class="btn btn-danger card-btn">Meet the drivers</a>
-      </article>
-      <article class="feature-card">
-        <img data-src="Images/Worldmap.jpg" alt="Races 2026" class="feature-img">
-        <h2>Race Weekends Worldwide</h2>
-        <p>Explore circuits and race dates around the world, from Australia to Abu Dhabi.</p>
-        <a href="Schedule.html" class="btn btn-danger card-btn">View schedule</a>
-      </article>
-      <article class="feature-card">
-        <img data-src="Images/Card3.jpg" alt="Teams and drivers" class="feature-img">
-        <h2>11 Teams, 22 Drivers</h2>
-        <p>Cadillac debuts as the eleventh team, while Audi makes its debut as a manufacturer team.</p>
-        <a href="Drivers.html" class="btn btn-danger card-btn">See the grid</a>
-      </article>
-    </section>
-
-    <section class="about-section container">
-      <p class="hero-eyebrow">About Us</p>
-      <h2>Meet the Team</h2>
-      <div class="about-grid row">
-        <div class="col-12 col-lg-6"><article class="about-card">
-          <img src="Images/Asset.jpg" class="team-photo" alt="Asset, Grid Line co-creator">
-          <h3>Asset</h3>
-          <p>
-            Front-end developer and F1 fan. Worked on the website design,
-            navigation, and main pages.
-          </p>
-        </article></div>
-
-        <div class="col-12 col-lg-6"><article class="about-card">
-          <img src="Images/Roma.jpg" class="team-photo" alt="Ramazan, Grid Line co-creator">
-          <h3>Ramazan</h3>
-          <p>
-            Front-end developer and F1 fan. Worked on the page content,
-            schedule, and website structure.
-          </p>
-        </article></div>
+    <section class="home-explore" aria-labelledby="home-explore-title">
+      <div class="home-section-heading">
+        <div><p class="hero-eyebrow">Go beyond the chequered flag</p><h2 id="home-explore-title">Your next stop.</h2></div>
+        <p>Drivers to follow. Weekends to plan.<br>A place for your favorites.</p>
+      </div>
+      <div class="feature-grid home-feature-grid">
+        <article class="feature-card home-feature-card">
+          <div class="home-card-image"><img src="Images/Driveri.jpg" alt="Formula 1 drivers in their racing suits" class="feature-img" loading="lazy"><span class="home-card-number" aria-hidden="true">01</span></div>
+          <div class="home-card-content"><p class="home-card-kicker">THE PEOPLE</p><h3>Meet the grid.</h3><p>Find drivers by name, team or country. Get to know the faces behind the visors.</p><a href="Drivers.html" class="home-card-link">Explore drivers <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="feature-card home-feature-card">
+          <div class="home-card-image"><img src="Images/Worldmap.jpg" alt="World map of Formula 1 race locations" class="feature-img" loading="lazy"><span class="home-card-number" aria-hidden="true">02</span></div>
+          <div class="home-card-content"><p class="home-card-kicker">THE WEEKENDS</p><h3>Never miss lights out.</h3><p>Explore the calendar and check race-weekend session times in your local time zone.</p><a href="Schedule.html" class="home-card-link">View race calendar <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="feature-card home-feature-card">
+          <div class="home-card-image home-personal-image"><img src="Images/Leclerc.png" alt="Charles Leclerc in his Ferrari racing suit" class="feature-img" loading="lazy"><span class="home-card-number" aria-hidden="true">03</span><span class="home-image-heart" aria-hidden="true">♥</span></div>
+          <div class="home-card-content"><p class="home-card-kicker">YOUR PADDOCK</p><h3>Follow your favorites.</h3><p>Choose your team, like your drivers and keep your personal collection together.</p><a href="Profile.html" class="home-card-link">Open your profile <span aria-hidden="true">↗</span></a></div>
+        </article>
       </div>
     </section>
 
-    <section class="list-section">
-      <h2>What's New in the Season</h2>
-      <ul class="list-plain">
-        <li>Cadillac joins F1 as the 11th team.</li>
-        <li>Audi becomes a new factory team after taking over Sauber.</li>
-        <li>The Spanish Grand Prix moves to Madrid.</li>
-        <li>Imola is removed from the 2026 calendar.</li>
-        <li>Arvid Lindblad makes his F1 debut with Racing Bulls.</li>
+    <section class="home-season" aria-labelledby="home-season-title">
+      <div class="home-season-intro"><p class="hero-eyebrow">The 2026 chapter</p><h2 id="home-season-title">New names.<br>Same obsession.</h2><p>A new era gives fans plenty to watch. These are some of the changes shaping the season.</p></div>
+      <ul class="home-season-list">
+        <li><span aria-hidden="true">01</span><p>Cadillac joins Formula 1 as the eleventh team.</p></li>
+        <li><span aria-hidden="true">02</span><p>Audi becomes a factory team after taking over Sauber.</p></li>
+        <li><span aria-hidden="true">03</span><p>Madrid joins the calendar as the new home of the Spanish Grand Prix.</p></li>
+        <li><span aria-hidden="true">04</span><p>Imola is absent from the 2026 race calendar.</p></li>
+        <li><span aria-hidden="true">05</span><p>Arvid Lindblad makes his F1 debut with Racing Bulls.</p></li>
       </ul>
     </section>
-<section class="faq-section container" aria-labelledby="faq-title">
-      <p class="hero-eyebrow">Before lights out</p>
-      <h2 id="faq-title">Frequently asked questions</h2>
-      <article class="faq-item">
-        <h3>
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">What is Grid Line?<span aria-hidden="true">+</span></button>
-        </h3>
-        <div id="faq-answer-1" class="faq-answer" inert>
-          <div>
-            <p>Grid Line is an unofficial Formula 1 fan website created by Asset and Ramazan.</p>
-          </div>
-        </div>
-      </article>
-      <article class="faq-item">
-        <h3>
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">Where can I find the race schedule?<span aria-hidden="true">+</span></button>
-        </h3>
-        <div id="faq-answer-2" class="faq-answer" inert>
-          <div>
-            <p>Open the Schedule page from the main navigation to explore the race calendar.</p>
-          </div>
-        </div>
-      </article>
-      <article class="faq-item">
-        <h3>
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">How can I contact the team?<span aria-hidden="true">+</span></button>
-        </h3>
-        <div id="faq-answer-3" class="faq-answer" inert>
-          <div>
-            <p>Visit the Contacts page and fill out the contact form.</p>
-          </div>
-        </div>
-      </article>
+
+    <section class="about-section container home-team" aria-labelledby="home-team-title">
+      <div class="home-section-heading"><div><p class="hero-eyebrow">Made by fans</p><h2 id="home-team-title">The people behind Grid Line.</h2></div><p>Two developers.<br>One shared love of Formula 1.</p></div>
+      <div class="about-grid row">
+        <div class="col-12 col-lg-6"><article class="about-card"><img src="Images/Asset.jpg" class="team-photo" alt="Asset, Grid Line co-creator" loading="lazy"><div><p class="home-team-role">DESIGN &amp; FRONT END</p><h3>Asset</h3><p>Front-end developer and F1 fan. Worked on the website design, navigation and main pages.</p></div></article></div>
+        <div class="col-12 col-lg-6"><article class="about-card"><img src="Images/Roma.jpg" class="team-photo" alt="Ramazan, Grid Line co-creator" loading="lazy"><div><p class="home-team-role">CONTENT &amp; STRUCTURE</p><h3>Ramazan</h3><p>Front-end developer and F1 fan. Worked on the page content, schedule and website structure.</p></div></article></div>
+      </div>
     </section>
 
-
+    <section class="faq-section container home-faq" aria-labelledby="faq-title">
+      <div class="home-faq-intro"><p class="hero-eyebrow">Before lights out</p><h2 id="faq-title">A few things<br>to know.</h2><p>Your quick introduction to Grid Line.</p></div>
+      <div class="home-faq-items">
+        <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">What is Grid Line?<span aria-hidden="true">+</span></button></h3><div id="faq-answer-1" class="faq-answer" inert><div><p>Grid Line is an unofficial Formula 1 fan website created by Asset and Ramazan.</p></div></div></article>
+        <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">Where can I find the race schedule?<span aria-hidden="true">+</span></button></h3><div id="faq-answer-2" class="faq-answer" inert><div><p>Open Schedule to explore the calendar and check the next race weekend's session times.</p></div></div></article>
+        <article class="faq-item"><h3><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">How can I contact the team?<span aria-hidden="true">+</span></button></h3><div id="faq-answer-3" class="faq-answer" inert><div><p>The Contacts page lets you write and save a question or idea as a message draft.</p></div></div></article>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>Created by Asset, Ramazan</p>
   <div class="site-tools" aria-label="Website tools">
-      <button type="button" class="btn btn-outline-light" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode"><span class="theme-switch" aria-hidden="true"></span> Dark mode</button>
       <button type="button" class="btn btn-danger" id="subscribe-open">Race preferences</button>
     </div></footer>
 <dialog id="subscribe-dialog" aria-labelledby="subscribe-title">

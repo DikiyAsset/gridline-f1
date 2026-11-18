@@ -1,0 +1,126 @@
+/* Home editorial layout: shared colors and controls come from visual.css. */
+.home-page { overflow: clip; }
+.home-hero { display: grid; grid-template-columns: .95fr 1.05fr; align-items: stretch; width: calc(100% - 48px); max-width: 1360px; min-height: 0; margin: 24px auto 76px; padding: 0; border-radius: 24px; overflow: hidden; background: #0a0d14; color: #fff; box-shadow: 0 24px 70px rgb(0 0 0 / 16%); }
+.home-hero::after { content: none; }
+.home-hero .home-hero-copy { position: relative; z-index: 1; max-width: none; min-width: 0; padding: clamp(36px, 4.5vw, 66px); background: linear-gradient(145deg, #d91f20 0%, #cb191c 66%, #ae1019 100%); animation: none; }
+.home-season-tag { display: flex; align-items: center; gap: 9px; color: #fff !important; font: 700 .72rem/1.5 'Segoe UI', sans-serif; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 30px; }
+.home-season-tag > span { width: 7px; height: 7px; border-radius: 50%; background: var(--signal, #ddff4f); flex-shrink: 0; }
+.home-hero h1 { max-width: none; margin-bottom: 24px; font-size: clamp(2.35rem, 6.1vw, 5.6rem); line-height: 1.05; letter-spacing: -.045em; }
+.home-hero h1 > span { color: var(--signal, #ddff4f); }
+.home-hero .hero-sub { max-width: 35ch; margin: 0; color: #fff; font: 400 clamp(1rem, 1.3vw, 1.14rem)/1.75 'Segoe UI', sans-serif; }
+.home-hero-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; margin-top: 32px; }
+.home-hero-actions .btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 52px; border-radius: 10px; padding: 14px 18px; font-size: .78rem; line-height: 1.4; }
+.home-hero-actions .home-primary-action { background: #fff; border: 1px solid #fff; color: #121821; }
+.home-hero-actions .home-primary-action:hover { background: var(--signal, #ddff4f); border-color: var(--signal, #ddff4f); color: #121821; }
+.home-hero-actions .home-secondary-action { background: transparent; border: 1px solid rgb(255 255 255 / 65%); color: #fff; }
+.home-hero-actions .home-secondary-action:hover { background: rgb(255 255 255 / 12%); border-color: #fff; color: #fff; }
+.home-hero-actions .btn > span { font: 1.3rem/1 'Segoe UI', sans-serif; }
+.home-independent { margin-top: 30px; color: #ffe8e4; font: .78rem/1.6 'Segoe UI', sans-serif; }
+.home-hero-art { position: relative; min-width: 0; min-height: 580px; overflow: hidden; background: #070a10; }
+.home-hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 0; transform: translateY(65px) scale(1.08); }
+.home-hero-art::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgb(7 10 16 / 50%), transparent 27%, transparent 62%, rgb(7 10 16 / 90%)); }
+.home-art-topline { position: absolute; z-index: 1; top: 30px; left: 30px; right: 30px; display: flex; justify-content: space-between; align-items: center; gap: 14px; color: #e6e9f2; font: 600 .67rem/1.5 'Segoe UI', sans-serif; letter-spacing: .1em; }
+.home-art-badge { border: 1px solid rgb(255 255 255 / 32%); padding: 6px 10px; border-radius: 30px; color: var(--signal, #ddff4f); white-space: nowrap; }
+.home-art-caption { position: absolute; z-index: 1; left: 34px; right: 34px; bottom: 34px; }
+.home-art-caption p { margin-bottom: 9px; color: #c5cbd7; font: .8rem/1.5 'Segoe UI', sans-serif; }
+.home-art-caption h2 { color: #fff; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.25; }
+.home-explore, .home-team, .home-faq { max-width: 1320px; width: 100%; margin: auto; padding: 0 4vw 76px; }
+.home-section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; margin-bottom: 30px; }
+.home-section-heading h2 { font-size: clamp(1.55rem, 3vw, 2.4rem); margin: 0; letter-spacing: -.025em; }
+.home-section-heading > p { color: var(--muted); font: 1rem/1.7 'Segoe UI', sans-serif; }
+.home-feature-grid { max-width: none; margin: 0; padding: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.home-feature-grid .home-feature-card { display: flex; flex-direction: column; padding: 0; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--surface); box-shadow: 0 10px 35px rgb(0 0 0 / 5%); }
+.home-card-image { position: relative; overflow: hidden; height: 206px; background: #0a0d15; }
+.home-feature-card .feature-img { width: 100%; height: 100%; margin: 0; object-fit: cover; transition: transform .5s ease; }
+.home-feature-card:hover .feature-img, .home-feature-card:focus-within .feature-img { transform: scale(1.045); }
+.home-card-number { position: absolute; left: 18px; top: 18px; z-index: 1; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 8px; background: var(--signal, #ddff4f); color: #151b21; font: 800 .75rem/1 'Segoe UI', sans-serif; }
+.home-personal-image { background: radial-gradient(ellipse at 50% 65%, #b52b27 0, #2a141d 65%, #11151f 100%); }
+.home-personal-image .feature-img { object-fit: contain; object-position: center 12%; padding-top: 16px; }
+.home-image-heart { position: absolute; right: 22px; bottom: 22px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: #f93932; background: #fff; font: 1.35rem/1 'Segoe UI', sans-serif; transform: rotate(-12deg); }
+.home-card-content { display: flex; flex-direction: column; flex: 1; padding: 26px; }
+.home-card-kicker { margin-bottom: 12px; color: var(--accent); font: 700 .67rem/1.5 'Segoe UI', sans-serif; letter-spacing: .13em; }
+.home-card-content h3 { font-size: clamp(1rem, 1.55vw, 1.3rem); line-height: 1.4; margin: 0 0 12px; }
+.home-card-content > p:not(.home-card-kicker) { font: .97rem/1.75 'Segoe UI', sans-serif; color: var(--muted); margin: 0 0 24px; }
+.home-card-link { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); min-height: 44px; color: var(--text); font: 700 .85rem/1.5 'Segoe UI', sans-serif; }
+.home-card-link > span { color: var(--accent); font-size: 1.35rem; }
+.home-card-link:hover { color: var(--accent); }
+.home-season { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; width: calc(100% - 8vw); max-width: 1215px; margin: 0 auto 80px; padding: 44px; border: 1px solid var(--border); border-radius: 22px; background: color-mix(in srgb, var(--surface) 92%, var(--accent)); }
+.home-season-intro { min-width: 0; }
+.home-season-intro h2 { font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height: 1.3; letter-spacing: -.025em; margin-bottom: 20px; }
+.home-season-intro > p:last-child { max-width: 30ch; color: var(--muted); font: 1rem/1.7 'Segoe UI', sans-serif; }
+.home-season-list { list-style: none; display: grid; gap: 0; margin: 0; padding: 0; }
+.home-season-list li { display: flex; align-items: flex-start; gap: 18px; border-bottom: 1px solid var(--border); padding: 15px 0; }
+.home-season-list li:first-child { padding-top: 0; }
+.home-season-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.home-season-list li > span { flex-shrink: 0; color: var(--accent); font: 700 .72rem/1.8 'Segoe UI', sans-serif; }
+.home-season-list p { color: var(--text); font: .95rem/1.65 'Segoe UI', sans-serif; }
+.home-team .about-card { display: flex; flex-direction: row; align-items: flex-start; gap: 22px; border-left: 1px solid var(--border); border-radius: 18px; padding: 28px; background: var(--surface); }
+.home-team .team-photo { width: 80px; height: 80px; flex-shrink: 0; border: 3px solid color-mix(in srgb, var(--accent) 30%, var(--surface)); margin: 0; }
+.home-team .home-team-role { color: var(--accent); font: 700 .64rem/1.5 'Segoe UI', sans-serif; letter-spacing: .1em; margin-bottom: 8px; }
+.home-team .about-card h3 { font-size: 1.25rem; margin: 0 0 10px; }
+.home-team .about-card p:last-child { color: var(--muted); font: .95rem/1.7 'Segoe UI', sans-serif; margin: 0; }
+.home-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; padding-top: 4px; padding-bottom: 84px; }
+.home-faq-intro h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.3; margin-bottom: 20px; }
+.home-faq-intro > p:last-child { color: var(--muted); font: 1rem/1.7 'Segoe UI', sans-serif; }
+.home-faq .faq-item { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: 0 22px; margin-bottom: 12px; }
+.home-faq .faq-question { min-height: 76px; padding: 20px 0; font: 700 .95rem/1.6 'Segoe UI', sans-serif; }
+.home-faq .faq-question > span { font: 1.5rem/1 'Segoe UI', sans-serif; align-self: center; }
+.home-faq .faq-answer p { font: .95rem/1.7 'Segoe UI', sans-serif; }
+@media (max-width: 1100px) {
+  .home-hero-art { min-height: 550px; }
+  .home-hero-actions { flex-direction: column; align-items: stretch; }
+  .home-hero-actions .btn { width: 100%; }
+  .home-card-content { padding: 22px; }
+  .home-card-image { height: 180px; }
+}
+@media (max-width: 991.98px) {
+  .home-hero { grid-template-columns: minmax(0, 1fr); }
+  .home-hero .home-hero-copy { padding: 46px; }
+  .home-hero h1 { font-size: clamp(3rem, 8.5vw, 5rem); }
+  .home-hero .hero-sub { max-width: 44ch; }
+  .home-hero-actions { flex-direction: row; }
+  .home-hero-actions .btn { width: auto; }
+  .home-hero-art { min-height: 390px; }
+  .home-hero-photo { transform: translateY(45px) scale(1.08); }
+  .home-art-caption { bottom: 26px; }
+  .home-feature-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .home-feature-grid .home-feature-card { display: grid; grid-template-columns: .8fr 1.2fr; }
+  .home-card-image { height: 100%; min-height: 240px; }
+  .home-personal-image .feature-img { object-position: center; }
+  .home-card-content h3 { font-size: 1.3rem; }
+  .home-season, .home-faq { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .home-season-intro > p:last-child { max-width: 50ch; }
+}
+@media (max-width: 639.98px) {
+  .home-hero { width: calc(100% - 24px); margin: 12px auto 48px; border-radius: 16px; }
+  .home-hero .home-hero-copy { padding: 34px 24px; }
+  .home-season-tag { font-size: .61rem; letter-spacing: .09em; margin-bottom: 24px; }
+  .home-hero h1 { font-size: clamp(2.2rem, 10.5vw, 4rem); letter-spacing: -.04em; }
+  .home-hero .hero-sub { font-size: 1rem; }
+  .home-hero-actions { flex-direction: column; margin-top: 26px; }
+  .home-hero-actions .btn { width: 100%; min-height: 50px; font-size: .74rem; }
+  .home-independent { font-size: .72rem; margin-top: 22px; }
+  .home-hero-art { min-height: 300px; }
+  .home-hero-photo { transform: translateY(44px) scale(1.04); }
+  .home-art-topline { top: 20px; left: 20px; right: 20px; font-size: .55rem; gap: 10px; }
+  .home-art-badge { padding: 5px 8px; }
+  .home-art-caption { left: 24px; right: 24px; bottom: 22px; }
+  .home-art-caption p { font-size: .7rem; margin-bottom: 6px; }
+  .home-art-caption h2 { font-size: 1.35rem; }
+  .home-explore, .home-team, .home-faq { padding-inline: 20px; padding-bottom: 48px; }
+  .home-section-heading { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+  .home-section-heading > p { font-size: .95rem; }
+  .home-feature-grid .home-feature-card { display: flex; }
+  .home-card-image { height: 190px; min-height: 0; }
+  .home-card-content { padding: 22px; }
+  .home-card-content h3 { font-size: 1.18rem; }
+  .home-season { width: calc(100% - 40px); padding: 28px 22px; margin-bottom: 48px; gap: 28px; border-radius: 16px; }
+  .home-season-intro h2 { font-size: 1.65rem; }
+  .home-season-list li { gap: 14px; }
+  .home-team .about-card { flex-direction: column; gap: 18px; padding: 24px; }
+  .home-faq .faq-item { padding-inline: 18px; }
+  .home-faq .faq-question { font-size: .92rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-feature-card:hover .feature-img, .home-feature-card:focus-within .feature-img { transform: none; }
+}
