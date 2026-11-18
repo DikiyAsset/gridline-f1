@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <meta name="description" content="Grid Line: an independent Formula 1 fan hub with drivers, race dates, a fan guide and your favorite drivers.">
+  <title>Grid Line | Formula 1 fan hub</title>
 
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="css/style.css?v=final-1">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
 
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/account.css?v=final-1">
+  <script src="js/drivers-data.js?v=final-1" defer></script>
+  <script src="js/account.js?v=final-1" defer></script>
+  <script src="js/script.js?v=final-1" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+  <div id="site-notification" role="status" aria-live="polite"></div>
 
   <header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-dark p-0" aria-label="Main navigation">
@@ -26,6 +35,8 @@
           <li class="nav-item"><a href="Drivers.html" class="nav-link">DRIVERS</a></li>
           <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
           <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
+          <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
+          <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
           </ul>
         </div>
       </div>
@@ -34,34 +45,34 @@
 
   <main id="main-content">
     <section class="hero">
-      <video autoplay muted playsinline class="hero-video">
+      <video autoplay muted playsinline loop aria-label="Formula 1 racing footage" class="hero-video">
         <source src="Images/NewferVideo.mp4" type="video/mp4">
       </video>
       <div class="hero-text">
         <p class="hero-eyebrow">Season 2026</p>
         <h1>The race<br>begins.</h1>
-        <p class="hero-sub">Grid Line an unofficial F1 fan site with information
+        <p class="hero-sub">Grid Line is an unofficial F1 fan site with information
        about drivers, teams, races, and the 2026 season.
         </p>
-        <a href="Schedule.html" class="btn btn-primary btn-lg">Watch schedule</a>
+        <a href="Schedule.html" class="btn btn-primary btn-lg">View race calendar</a>
       </div>
     </section>
 
     <section class="feature-grid">
       <article class="feature-card">
-        <img src="Images/Driveri.jpg" alt="New regulations" class="feature-img">
+        <img data-src="Images/Driveri.jpg" alt="New regulations" class="feature-img">
         <h2>New Technical Regulations</h2>
-        <p>The 2026 season brings new aerodynamics, smaller power units, and sustainable fuel.</p>
+        <p>The 2026 season brings new aerodynamics, revised hybrid power units, and sustainable fuel.</p>
         <a href="Drivers.html" class="btn btn-danger card-btn">Meet the drivers</a>
       </article>
       <article class="feature-card">
-        <img src="Images/Worldmap.jpg" alt="Races 2026" class="feature-img">
-        <h2>24 Races in 2026</h2>
-        <p>The 2026 season includes 24 races around the world, from Australia to Abu Dhabi.</p>
+        <img data-src="Images/Worldmap.jpg" alt="Races 2026" class="feature-img">
+        <h2>Race Weekends Worldwide</h2>
+        <p>Explore circuits and race dates around the world, from Australia to Abu Dhabi.</p>
         <a href="Schedule.html" class="btn btn-danger card-btn">View schedule</a>
       </article>
       <article class="feature-card">
-        <img src="Images/Card3.jpg" alt="Teams and drivers" class="feature-img">
+        <img data-src="Images/Card3.jpg" alt="Teams and drivers" class="feature-img">
         <h2>11 Teams, 22 Drivers</h2>
         <p>Cadillac debuts as the eleventh team, while Audi makes its debut as a manufacturer team.</p>
         <a href="Drivers.html" class="btn btn-danger card-btn">See the grid</a>
@@ -73,6 +84,7 @@
       <h2>Meet the Team</h2>
       <div class="about-grid row">
         <div class="col-12 col-lg-6"><article class="about-card">
+          <img src="Images/Asset.jpg" class="team-photo" alt="Asset, Grid Line co-creator">
           <h3>Asset</h3>
           <p>
             Front-end developer and F1 fan. Worked on the website design,
@@ -81,6 +93,7 @@
         </article></div>
 
         <div class="col-12 col-lg-6"><article class="about-card">
+          <img src="Images/Roma.jpg" class="team-photo" alt="Ramazan, Grid Line co-creator">
           <h3>Ramazan</h3>
           <p>
             Front-end developer and F1 fan. Worked on the page content,
@@ -100,22 +113,65 @@
         <li>Arvid Lindblad makes his F1 debut with Racing Bulls.</li>
       </ul>
     </section>
+<section class="faq-section container" aria-labelledby="faq-title">
+      <p class="hero-eyebrow">Before lights out</p>
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <article class="faq-item">
+        <h3>
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1">What is Grid Line?<span aria-hidden="true">+</span></button>
+        </h3>
+        <div id="faq-answer-1" class="faq-answer" inert>
+          <div>
+            <p>Grid Line is an unofficial Formula 1 fan website created by Asset and Ramazan.</p>
+          </div>
+        </div>
+      </article>
+      <article class="faq-item">
+        <h3>
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2">Where can I find the race schedule?<span aria-hidden="true">+</span></button>
+        </h3>
+        <div id="faq-answer-2" class="faq-answer" inert>
+          <div>
+            <p>Open the Schedule page from the main navigation to explore the race calendar.</p>
+          </div>
+        </div>
+      </article>
+      <article class="faq-item">
+        <h3>
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3">How can I contact the team?<span aria-hidden="true">+</span></button>
+        </h3>
+        <div id="faq-answer-3" class="faq-answer" inert>
+          <div>
+            <p>Visit the Contacts page and fill out the contact form.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+
   </main>
 
   <footer>
     <p>Created by Asset, Ramazan</p>
-    <p class="media-link"><a href="MediaQueries.html">Media Queries</a></p>
-  </footer>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const heroText = document.querySelector('.hero-text');
-
-      setTimeout(() => {
-        if (heroText) {
-          heroText.classList.add('visible');
-        }
-      }, 3000);
-    });
-  </script>
+  <div class="site-tools" aria-label="Website tools">
+      <button type="button" class="btn btn-outline-light" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode"><span class="theme-switch" aria-hidden="true"></span> Dark mode</button>
+      <button type="button" class="btn btn-danger" id="subscribe-open">Race preferences</button>
+    </div></footer>
+<dialog id="subscribe-dialog" aria-labelledby="subscribe-title">
+    <button type="button" id="subscribe-close" class="dialog-close" aria-label="Close subscription form">&times;</button>
+    <p class="hero-eyebrow">Join the grid</p><h2 id="subscribe-title">Your race weekend</h2>
+    <p class="form-note">Save your preferences on this device. No emails are sent.</p>
+    <form id="subscribe-form" novalidate>
+      <label for="subscribe-email">Email</label>
+      <input class="form-control" id="subscribe-email" name="email" type="text" inputmode="email" autocomplete="email" aria-describedby="subscribe-error">
+      <p class="field-error" id="subscribe-error" aria-live="polite"></p>
+      <label for="preference-team">Favorite team</label>
+      <select class="form-select" id="preference-team" name="team">
+        <option value="all">All teams</option><option>Ferrari</option><option>McLaren</option><option>Mercedes</option><option>Red Bull</option><option>Aston Martin</option><option>Cadillac</option>
+      </select>
+      <button class="btn btn-danger" type="submit">Save preferences</button>
+      <p id="subscribe-status" role="status"></p>
+    </form>
+  </dialog>
 </body>
 </html>

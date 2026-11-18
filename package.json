@@ -1,0 +1,7 @@
+{
+  "name": "grid-line-final-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Grid Line static Formula 1 fan website, SE-2513",
+  "scripts": { "test": "node --test" }
+}

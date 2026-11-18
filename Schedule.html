@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule</title>
+  <meta name="description" content="Grid Line: an independent Formula 1 fan hub with drivers, race dates, a fan guide and your favorite drivers.">
+  <title>Race calendar | Grid Line</title>
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="css/style.css?v=final-1">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/account.css?v=final-1">
+  <script src="js/drivers-data.js?v=final-1" defer></script>
+  <script src="js/account.js?v=final-1" defer></script>
+  <script src="js/script.js?v=final-1" defer></script>
+  <script src="js/race-data.js?v=final-1" defer></script>
+  <link rel="stylesheet" href="css/race-data.css?v=final-1">
 </head>
 <body class="layout">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+  <div id="site-notification" role="status" aria-live="polite"></div>
 
   <header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-dark p-0" aria-label="Main navigation">
@@ -24,6 +35,8 @@
           <li class="nav-item"><a href="Drivers.html" class="nav-link">DRIVERS</a></li>
           <li class="nav-item"><a href="Schedule.html" class="nav-link active" aria-current="page">SCHEDULE</a></li>
           <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
+          <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
+          <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
           </ul>
         </div>
       </div>
@@ -43,14 +56,30 @@
     <section class="page-intro">
       <div class="intro-text">
       <p class="hero-eyebrow">Schedule 2026</p>
-      <h1>24 stages, five continents</h1>
+      <h1>The season, circuit by circuit</h1>
       <p class="hero-sub">The season opens in Melbourne and concludes with a triple finale
       in Las Vegas, Qatar, and Abu Dhabi.</p>
       </div>
-      <img src="Images/Trophy.png" alt="Illustration of a trophy with a chess pattern" class="inline-icon">
+      <img data-src="Images/Trophy.png" alt="Illustration of a trophy with a chess pattern" class="inline-icon">
     </section>
 
-    <section class="table-section">
+    <section class="list-section race-live" aria-labelledby="race-data-title">
+      <div class="section-heading"><div><p class="hero-eyebrow">From the paddock</p><h2 id="race-data-title">Race weekend</h2></div><button id="race-refresh" type="button" class="btn btn-outline-light">Refresh race data</button></div>
+      <p id="race-api-status" role="status" aria-live="polite"></p>
+      <div id="race-api-content"></div>
+      <p class="form-note">Race data: <a class="text-link" href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener noreferrer">Jolpica F1</a>. Times shown in your local time zone.</p>
+    </section>
+
+    <section class="list-section copy-section">
+      <h2>Race weekend reminder</h2>
+      <p id="calendar-snippet">Check the Grid Line schedule for the next race weekend.</p>
+      <button type="button" class="btn btn-danger copy-button" data-copy-target="#calendar-snippet" title="Copy text" aria-label="Copy race weekend reminder" aria-describedby="copy-tooltip">
+        <span class="copy-icon" aria-hidden="true">⧉</span> Copy
+        <span id="copy-tooltip" class="copy-tooltip" role="tooltip" hidden></span>
+      </button>
+    </section>
+
+    <section class="table-section" aria-label="2026 race calendar">
       <table>
         <thead>
           <tr>
@@ -61,30 +90,30 @@
           </tr>
         </thead>
         <tbody>
-            <tr><td>1</td><td>Australia</td><td>Albert Park, Melbourne</td><td>6–8 March</td></tr>
-            <tr><td>2</td><td>China</td><td>Shanghai</td><td>13–15 March</td></tr>
-            <tr><td>3</td><td>Japan</td><td>Suzuka</td><td>27–29 March</td></tr>
-            <tr><td>4</td><td>Bahrain</td><td>Sakhir</td><td>10–12 April</td></tr>
-            <tr><td>5</td><td>Saudi Arabia</td><td>Jeddah</td><td>17–19 April</td></tr>
-            <tr><td>6</td><td>Miami, USA</td><td>International Raceway of Miami</td><td>1–3 May</td></tr>
-            <tr><td>7</td><td>Canada</td><td>Montreal</td><td>22–24 May</td></tr>
-            <tr><td>8</td><td>Monaco</td><td>Monte Carlo</td><td>5–7 June</td></tr>
-            <tr><td>9</td><td>Spain</td><td>Barcelona-Catalonia</td><td>12–14 June</td></tr>
-            <tr><td>10</td><td>Austria</td><td>Spielberg</td><td>26–28 June</td></tr>
-            <tr><td>11</td><td>Great Britain</td><td>Silverstone</td><td>3–5 July</td></tr>
-            <tr><td>12</td><td>Belgium</td><td>Spa-Francorchamps</td><td>17–19 July</td></tr>
-            <tr><td>13</td><td>Hungary</td><td>Budapest</td><td>24–26 July</td></tr>
-            <tr><td>14</td><td>Netherlands</td><td>Zandvoort</td><td>21–23 August</td></tr>
-            <tr><td>15</td><td>Italy</td><td>Monza</td><td>4–6 September</td></tr>
-            <tr><td>16</td><td>Spain</td><td>Madrid</td><td>11–13 September</td></tr>
-            <tr><td>17</td><td>Azerbaijan</td><td>Baku</td><td>24–26 September</td></tr>
-            <tr><td>18</td><td>Singapore</td><td>Marina Bay</td><td>9–11 October</td></tr>
-            <tr><td>19</td><td>USA</td><td>Austin</td><td>23–25 October</td></tr>
-            <tr><td>20</td><td>Mexico</td><td>Mexico City</td><td>30 Oct – 1 Nov</td></tr>
-            <tr><td>21</td><td>Brazil</td><td>Sao Paulo</td><td>6–8 November</td></tr>
-            <tr><td>22</td><td>Las Vegas, USA</td><td>Strip</td><td>19–21 November</td></tr>
-            <tr><td>23</td><td>Qatar</td><td>Lusail</td><td>27–29 November</td></tr>
-            <tr><td>24</td><td>Abu Dhabi</td><td>Yas Marina</td><td>4–6 December</td></tr>
+            <tr><td data-label="Stage">1</td><td data-label="Grand Prix">Australia</td><td data-label="Circuit">Albert Park, Melbourne</td><td data-label="Dates">6–8 March</td></tr>
+            <tr><td data-label="Stage">2</td><td data-label="Grand Prix">China</td><td data-label="Circuit">Shanghai</td><td data-label="Dates">13–15 March</td></tr>
+            <tr><td data-label="Stage">3</td><td data-label="Grand Prix">Japan</td><td data-label="Circuit">Suzuka</td><td data-label="Dates">27–29 March</td></tr>
+            <tr><td data-label="Stage">4</td><td data-label="Grand Prix">Bahrain</td><td data-label="Circuit">Sakhir</td><td data-label="Dates">10–12 April</td></tr>
+            <tr><td data-label="Stage">5</td><td data-label="Grand Prix">Saudi Arabia</td><td data-label="Circuit">Jeddah</td><td data-label="Dates">17–19 April</td></tr>
+            <tr><td data-label="Stage">6</td><td data-label="Grand Prix">Miami, USA</td><td data-label="Circuit">International Raceway of Miami</td><td data-label="Dates">1–3 May</td></tr>
+            <tr><td data-label="Stage">7</td><td data-label="Grand Prix">Canada</td><td data-label="Circuit">Montreal</td><td data-label="Dates">22–24 May</td></tr>
+            <tr><td data-label="Stage">8</td><td data-label="Grand Prix">Monaco</td><td data-label="Circuit">Monte Carlo</td><td data-label="Dates">5–7 June</td></tr>
+            <tr><td data-label="Stage">9</td><td data-label="Grand Prix">Spain</td><td data-label="Circuit">Barcelona-Catalonia</td><td data-label="Dates">12–14 June</td></tr>
+            <tr><td data-label="Stage">10</td><td data-label="Grand Prix">Austria</td><td data-label="Circuit">Spielberg</td><td data-label="Dates">26–28 June</td></tr>
+            <tr><td data-label="Stage">11</td><td data-label="Grand Prix">Great Britain</td><td data-label="Circuit">Silverstone</td><td data-label="Dates">3–5 July</td></tr>
+            <tr><td data-label="Stage">12</td><td data-label="Grand Prix">Belgium</td><td data-label="Circuit">Spa-Francorchamps</td><td data-label="Dates">17–19 July</td></tr>
+            <tr><td data-label="Stage">13</td><td data-label="Grand Prix">Hungary</td><td data-label="Circuit">Budapest</td><td data-label="Dates">24–26 July</td></tr>
+            <tr><td data-label="Stage">14</td><td data-label="Grand Prix">Netherlands</td><td data-label="Circuit">Zandvoort</td><td data-label="Dates">21–23 August</td></tr>
+            <tr><td data-label="Stage">15</td><td data-label="Grand Prix">Italy</td><td data-label="Circuit">Monza</td><td data-label="Dates">4–6 September</td></tr>
+            <tr><td data-label="Stage">16</td><td data-label="Grand Prix">Spain</td><td data-label="Circuit">Madrid</td><td data-label="Dates">11–13 September</td></tr>
+            <tr><td data-label="Stage">17</td><td data-label="Grand Prix">Azerbaijan</td><td data-label="Circuit">Baku</td><td data-label="Dates">24–26 September</td></tr>
+            <tr><td data-label="Stage">18</td><td data-label="Grand Prix">Singapore</td><td data-label="Circuit">Marina Bay</td><td data-label="Dates">9–11 October</td></tr>
+            <tr><td data-label="Stage">19</td><td data-label="Grand Prix">USA</td><td data-label="Circuit">Austin</td><td data-label="Dates">23–25 October</td></tr>
+            <tr><td data-label="Stage">20</td><td data-label="Grand Prix">Mexico</td><td data-label="Circuit">Mexico City</td><td data-label="Dates">30 Oct – 1 Nov</td></tr>
+            <tr><td data-label="Stage">21</td><td data-label="Grand Prix">Brazil</td><td data-label="Circuit">Sao Paulo</td><td data-label="Dates">6–8 November</td></tr>
+            <tr><td data-label="Stage">22</td><td data-label="Grand Prix">Las Vegas, USA</td><td data-label="Circuit">Strip</td><td data-label="Dates">19–21 November</td></tr>
+            <tr><td data-label="Stage">23</td><td data-label="Grand Prix">Qatar</td><td data-label="Circuit">Lusail</td><td data-label="Dates">27–29 November</td></tr>
+            <tr><td data-label="Stage">24</td><td data-label="Grand Prix">Abu Dhabi</td><td data-label="Circuit">Yas Marina</td><td data-label="Dates">4–6 December</td></tr>
         </tbody>
       </table>
     </section>
@@ -93,6 +122,26 @@
 
   <footer>
     <p>Created by Asset, Ramazan</p>
-  </footer>
+  <div class="site-tools" aria-label="Website tools">
+      <button type="button" class="btn btn-outline-light" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode"><span class="theme-switch" aria-hidden="true"></span> Dark mode</button>
+      <button type="button" class="btn btn-danger" id="subscribe-open">Race preferences</button>
+      <a class="footer-link" href="Schedule.html">Explore the race calendar &rarr;</a>
+    </div></footer>
+<dialog id="subscribe-dialog" aria-labelledby="subscribe-title">
+    <button type="button" id="subscribe-close" class="dialog-close" aria-label="Close subscription form">&times;</button>
+    <p class="hero-eyebrow">Join the grid</p><h2 id="subscribe-title">Your race weekend</h2>
+    <p class="form-note">Save your preferences on this device. No emails are sent.</p>
+    <form id="subscribe-form" novalidate>
+      <label for="subscribe-email">Email</label>
+      <input class="form-control" id="subscribe-email" name="email" type="text" inputmode="email" autocomplete="email" aria-describedby="subscribe-error">
+      <p class="field-error" id="subscribe-error" aria-live="polite"></p>
+      <label for="preference-team">Favorite team</label>
+      <select class="form-select" id="preference-team" name="team">
+        <option value="all">All teams</option><option>Ferrari</option><option>McLaren</option><option>Mercedes</option><option>Red Bull</option><option>Aston Martin</option><option>Cadillac</option>
+      </select>
+      <button class="btn btn-danger" type="submit">Save preferences</button>
+      <p id="subscribe-status" role="status"></p>
+    </form>
+  </dialog>
 </body>
 </html>

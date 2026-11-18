@@ -1,0 +1,58 @@
+/* Fan account pages reuse the site's shared color tokens and controls. */
+.account-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 48px; max-width: 1080px; margin: auto; padding: 64px 5vw 80px; align-items: start; }
+.account-intro { position: sticky; top: 118px; }
+.account-intro h1 { font-size: clamp(2rem, 4vw, 3.2rem); max-width: 13ch; }
+.account-intro img { width: 180px; height: 180px; object-fit: contain; margin-top: 28px; }
+.account-panel { min-width: 0; padding: 28px; border: 1px solid var(--border); border-top: 3px solid var(--button); border-radius: 8px; background: var(--surface); }
+.account-panel h2 { margin-bottom: 18px; }
+.account-panel .form-row { margin-bottom: 18px; }
+.account-panel .form-note { margin-top: 12px; }
+.account-hint { font: .88rem/1.5 system-ui, sans-serif; color: var(--muted); }
+.account-status { font: .95rem/1.6 system-ui, sans-serif; margin-top: 16px; overflow-wrap: anywhere; }
+.account-status:empty { display: none; }
+.account-error { color: var(--error); }
+.account-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 20px; }
+.account-switch { margin-top: 22px; font: .95rem/1.7 system-ui, sans-serif; color: var(--muted); }
+.account-switch a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.password-toggle { background: none; border: 0; color: var(--accent); padding: 5px 0; align-self: start; text-decoration: underline; font: .88rem/1.5 system-ui, sans-serif; min-height: 36px; }
+.profile-shell { max-width: 1200px; margin: auto; padding: 12px 5vw 70px; }
+.profile-summary { display: flex; align-items: center; gap: 22px; margin-bottom: 28px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--button); border-radius: 8px; }
+.profile-avatar { flex-shrink: 0; display: grid; place-items: center; width: 76px; height: 76px; border-radius: 50%; background: var(--button); color: #fff; font-size: 1.5rem; }
+.profile-summary h2 { font-size: 1.5rem; margin-bottom: 8px; overflow-wrap: anywhere; }
+.profile-summary p { color: var(--muted); font: 1rem/1.7 system-ui, sans-serif; overflow-wrap: anywhere; }
+.profile-summary .btn { margin-left: auto; flex-shrink: 0; }
+.profile-columns { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
+.profile-likes-heading { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.profile-likes-heading p { color: var(--muted); font: .9rem/1.6 system-ui, sans-serif; margin-top: 8px; }
+.saved-drivers { display: grid; gap: 16px; }
+.saved-driver-card { min-width: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.saved-driver-card img { width: 100%; height: 100%; min-height: 160px; object-fit: contain; background: var(--input); }
+.saved-driver-card > div { padding: 18px; min-width: 0; }
+.saved-driver-card h3 { font-size: 1rem; overflow-wrap: anywhere; }
+.saved-driver-card p { color: var(--muted); font: .9rem/1.5 system-ui, sans-serif; margin: 8px 0 14px; }
+.saved-driver-card .btn { font-size: .75rem; }
+.profile-empty { padding: 24px; border: 1px dashed var(--border); border-radius: 8px; color: var(--muted); font: 1rem/1.8 system-ui, sans-serif; }
+.profile-empty a { color: var(--accent); text-decoration: underline; }
+.profile-detail-list { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font: .95rem/1.6 system-ui, sans-serif; }
+.profile-detail-list div { min-width: 0; }
+.profile-detail-list dt { font-weight: 600; }
+.profile-detail-list dd { margin: 0; overflow-wrap: anywhere; }
+.profile-guest { max-width: 680px; padding-bottom: 60px; }
+@media (max-width: 991.98px) {
+  .account-layout { gap: 28px; }
+  .profile-columns { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .account-layout { grid-template-columns: minmax(0, 1fr); padding-top: 36px; }
+  .account-intro { position: static; }
+  .account-intro img { width: 110px; height: 110px; margin-top: 18px; }
+  .account-panel { padding: 22px 18px; }
+  .account-actions > .btn { width: 100%; }
+  .profile-summary { flex-wrap: wrap; padding: 20px; }
+  .profile-summary > div:not(.profile-avatar) { min-width: 0; flex: 1; }
+  .profile-summary .btn { width: 100%; margin-left: 0; }
+  .profile-likes-heading { flex-direction: column; }
+  .saved-driver-card { grid-template-columns: 90px minmax(0, 1fr); }
+  .saved-driver-card > div { padding: 14px; }
+  .password-toggle { min-height: 44px; }
+}

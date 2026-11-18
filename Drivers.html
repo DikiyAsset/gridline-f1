@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drivers</title>
+  <meta name="description" content="Grid Line: an independent Formula 1 fan hub with drivers, race dates, a fan guide and your favorite drivers.">
+  <title>Drivers | Grid Line</title>
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="css/style.css?v=final-1">
   <script src="vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/account.css?v=final-1">
+  <script src="js/drivers-data.js?v=final-1" defer></script>
+  <script src="js/account.js?v=final-1" defer></script>
+  <script src="js/script.js?v=final-1" defer></script>
+  <script src="js/likes.js?v=final-1" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+  <div id="site-notification" role="status" aria-live="polite"></div>
 
   <header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-dark p-0" aria-label="Main navigation">
@@ -24,6 +34,8 @@
           <li class="nav-item"><a href="Drivers.html" class="nav-link active" aria-current="page">DRIVERS</a></li>
           <li class="nav-item"><a href="Schedule.html" class="nav-link">SCHEDULE</a></li>
           <li class="nav-item"><a href="Contacts.html" class="nav-link">CONTACTS</a></li>
+          <li class="nav-item"><a href="FanGuide.html" class="nav-link">FAN GUIDE</a></li>
+          <li class="nav-item"><a href="Profile.html" class="nav-link" data-account-link>PROFILE</a></li>
           </ul>
         </div>
       </div>
@@ -34,119 +46,100 @@
     <section class="page-intro">
       <div class="intro-text">
       <p class="hero-eyebrow">Drivers 2026</p>
-      <h1>Season Starting Grid</h1>
-      <p class="hero-sub">22 drivers, 11 teams and one common countdown to Melbourne. Below is a selection
-      of the drivers Grid Line is watching most closely.</p>
+      <h1>Meet the drivers</h1>
+      <p class="hero-sub">Explore a selection of the 2026 grid. Search by name, team or country, and like your favorite drivers to keep them in your profile.</p>
       </div>
-      <img src="Images/WheelF1.png" alt="Illustration of a racing wheel" class="driver-icon">
+      <img data-src="Images/WheelF1.png" alt="Illustration of a racing wheel" class="driver-icon">
     </section>
 
-    <section class="gallery">
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Roma.jpg" alt="Ramazan">
-        <figcaption>
-          <h3>Ramazan Abylkassym</h3>
-          <p>Shymkent · Kazakhstan</p>
-        </figcaption>
+    <section class="list-section driver-search-section" aria-labelledby="driver-search-label">
+      <label id="driver-search-label" for="driver-search">Search drivers, teams or countries</label>
+      <div class="search-box">
+        <input id="driver-search" class="form-control" type="search" placeholder="For example, Norris or Ferrari" autocomplete="off" aria-controls="driver-suggestions" aria-describedby="driver-search-status">
+        <div id="driver-suggestions" class="search-suggestions" hidden></div>
+      </div>
+      <div class="filter-actions"><button type="button" id="liked-filter" class="btn btn-outline-light" aria-pressed="false">Liked drivers</button><button type="button" id="search-clear" class="btn btn-outline-light">Clear filters</button></div>
+      <p id="driver-search-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="gallery" aria-label="Drivers">
+      <figure class="gallery-item" data-driver-id="norris">
+        <img src="Images/Norris.png" alt="Lando Norris" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="norris" aria-pressed="false" aria-label="Like Lando Norris"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Lando Norris</h3><p>McLaren · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Asset.jpg" alt="Asetik">
-        <figcaption>
-          <h3>Asset Nakipbek</h3>
-          <p>Astana · Kazakhstan</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="piastri">
+        <img src="Images/Piastri.png" alt="Oscar Piastri" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="piastri" aria-pressed="false" aria-label="Like Oscar Piastri"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Oscar Piastri</h3><p>McLaren · Australia</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Norris.png" alt="Lando Norris">
-        <figcaption>
-          <h3>Lando Norris</h3>
-          <p>McLaren · United Kingdom</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="leclerc">
+        <img src="Images/Leclerc.png" alt="Charles Leclerc" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="leclerc" aria-pressed="false" aria-label="Like Charles Leclerc"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Charles Leclerc</h3><p>Ferrari · Monaco</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Piastri.png" alt="Oscar Piastri">
-        <figcaption>
-          <h3>Oscar Piastri</h3>
-          <p>McLaren · Australia</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="hamilton">
+        <img src="Images/Hamilton.png" alt="Lewis Hamilton" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="hamilton" aria-pressed="false" aria-label="Like Lewis Hamilton"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Lewis Hamilton</h3><p>Ferrari · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Leclerc.png" alt="Charles Leclerc">
-        <figcaption>
-          <h3>Charles Leclerc</h3>
-          <p>Ferrari · Monaco</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="russell">
+        <img src="Images/Russell.png" alt="George Russell" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="russell" aria-pressed="false" aria-label="Like George Russell"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>George Russell</h3><p>Mercedes · United Kingdom</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Hamilton.png" alt="Lewis Hamilton">
-        <figcaption>
-          <h3>Lewis Hamilton</h3>
-          <p>Mercedes · United Kingdom</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="antonelli">
+        <img src="Images/antonelli.png" alt="Kimi Antonelli" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="antonelli" aria-pressed="false" aria-label="Like Kimi Antonelli"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Kimi Antonelli</h3><p>Mercedes · Italy</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Russell.png" alt="George Russell">
-        <figcaption>
-          <h3>George Russell</h3>
-          <p>Mercedes · United Kingdom</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="verstappen">
+        <img src="Images/verstappen.png" alt="Max Verstappen" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="verstappen" aria-pressed="false" aria-label="Like Max Verstappen"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Max Verstappen</h3><p>Red Bull · Netherlands</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/antonelli.png" alt="Kimi Antonelli">
-        <figcaption>
-          <h3>Kimi Antonelli</h3>
-          <p>Mercedes · Italy</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="hadjar">
+        <img src="Images/hadjar.png" alt="Isack Hadjar" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="hadjar" aria-pressed="false" aria-label="Like Isack Hadjar"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Isack Hadjar</h3><p>Red Bull · France</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/verstappen.png" alt="Max Verstappen">
-        <figcaption>
-          <h3>Max Verstappen</h3>
-          <p>Red Bull · Netherlands</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="alonso">
+        <img src="Images/Alonso.png" alt="Fernando Alonso" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="alonso" aria-pressed="false" aria-label="Like Fernando Alonso"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Fernando Alonso</h3><p>Aston Martin · Spain</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/hadjar.png" alt="Isaac Hadjar">
-        <figcaption>
-          <h3>Isaac Hadjar</h3>
-          <p>Red Bull · Mexico</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="stroll">
+        <img src="Images/Stroll.png" alt="Lance Stroll" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="stroll" aria-pressed="false" aria-label="Like Lance Stroll"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Lance Stroll</h3><p>Aston Martin · Canada</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Alonso.png" alt="Fernando Alonso">
-        <figcaption>
-          <h3>Fernando Alonso</h3>
-          <p>Aston Martin · Spain</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="bottas">
+        <img src="Images/valterri.png" alt="Valtteri Bottas" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="bottas" aria-pressed="false" aria-label="Like Valtteri Bottas"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Valtteri Bottas</h3><p>Cadillac · Finland</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/Stroll.png" alt="Lance Stroll">
-        <figcaption>
-          <h3>Lance Stroll</h3>
-          <p>Aston Martin · Canada</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="perez">
+        <img src="Images/peres.png" alt="Sergio Perez" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="perez" aria-pressed="false" aria-label="Like Sergio Perez"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Sergio Perez</h3><p>Cadillac · Mexico</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/valterri.png" alt="Valtteri Bottas">
-        <figcaption>
-          <h3>Valtteri Bottas</h3>
-          <p>Cadillac · Finland</p>
-        </figcaption>
+      <figure class="gallery-item" data-driver-id="lawson">
+        <img src="Images/lawson.png" alt="Liam Lawson" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="lawson" aria-pressed="false" aria-label="Like Liam Lawson"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Liam Lawson</h3><p>Racing Bulls · New Zealand</p></figcaption>
       </figure>
-      <figure class="gallery-item" tabindex="0">
-        <img src="Images/peres.png" alt="Sergio Peres">
-        <figcaption>
-          <h3>Sergio Peres</h3>
-          <p>Cadillac · Mexico</p>
-        </figcaption>
-        </figure>
+      <figure class="gallery-item" data-driver-id="lindblad">
+        <img src="Images/lindblad.png" alt="Arvid Lindblad" loading="lazy">
+        <button type="button" class="driver-like" data-like-driver="lindblad" aria-pressed="false" aria-label="Like Arvid Lindblad"><span aria-hidden="true">♡</span><span class="like-label">Like</span></button>
+        <figcaption><h3>Arvid Lindblad</h3><p>Racing Bulls · United Kingdom</p></figcaption>
+      </figure>
     </section>
 
     <section class="list-section">
       <h2>Main Storylines of the Grid</h2>
       <ol class="list-plain">
-        <li>Cadillac's debut - the first American team in modern Formula 1 history.</li>
-        <li>Peres and Bottas return to full-time roles after a year away from racing.</li>
+        <li>Cadillac joins the grid as an eleventh team.</li>
+        <li>Perez and Bottas return to full-time roles after a year away from racing.</li>
         <li>The only newcomer of the season - Arvid Lindblad in the Racing Bulls lineup.</li>
       </ol>
     </section>
@@ -157,17 +150,17 @@
           <div class="carousel-item active" role="group" aria-roledescription="slide" aria-label="1 of 3">
             <div class="row g-0 card-group">
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Norris.png" class="carousel-driver-image" alt="Lando Norris">
+                <img data-src="Images/Norris.png" class="carousel-driver-image" alt="Lando Norris">
                 <h3 class="card-title mt-3 mb-2">Lando Norris</h3>
                 <p class="card-text mb-0">McLaren · United Kingdom</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Piastri.png" class="carousel-driver-image" alt="Oscar Piastri">
+                <img data-src="Images/Piastri.png" class="carousel-driver-image" alt="Oscar Piastri">
                 <h3 class="card-title mt-3 mb-2">Oscar Piastri</h3>
                 <p class="card-text mb-0">McLaren · Australia</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Leclerc.png" class="carousel-driver-image" alt="Charles Leclerc">
+                <img data-src="Images/Leclerc.png" class="carousel-driver-image" alt="Charles Leclerc">
                 <h3 class="card-title mt-3 mb-2">Charles Leclerc</h3>
                 <p class="card-text mb-0">Ferrari · Monaco</p>
               </article>
@@ -176,17 +169,17 @@
           <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 3">
             <div class="row g-0 card-group">
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Hamilton.png" class="carousel-driver-image" alt="Lewis Hamilton">
+                <img data-src="Images/Hamilton.png" class="carousel-driver-image" alt="Lewis Hamilton">
                 <h3 class="card-title mt-3 mb-2">Lewis Hamilton</h3>
-                <p class="card-text mb-0">Mercedes · United Kingdom</p>
+                <p class="card-text mb-0">Ferrari · United Kingdom</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Russell.png" class="carousel-driver-image" alt="George Russell">
+                <img data-src="Images/Russell.png" class="carousel-driver-image" alt="George Russell">
                 <h3 class="card-title mt-3 mb-2">George Russell</h3>
                 <p class="card-text mb-0">Mercedes · United Kingdom</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/antonelli.png" class="carousel-driver-image" alt="Kimi Antonelli">
+                <img data-src="Images/antonelli.png" class="carousel-driver-image" alt="Kimi Antonelli">
                 <h3 class="card-title mt-3 mb-2">Kimi Antonelli</h3>
                 <p class="card-text mb-0">Mercedes · Italy</p>
               </article>
@@ -195,17 +188,17 @@
           <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 3">
             <div class="row g-0 card-group">
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/verstappen.png" class="carousel-driver-image" alt="Max Verstappen">
+                <img data-src="Images/verstappen.png" class="carousel-driver-image" alt="Max Verstappen">
                 <h3 class="card-title mt-3 mb-2">Max Verstappen</h3>
                 <p class="card-text mb-0">Red Bull · Netherlands</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/hadjar.png" class="carousel-driver-image" alt="Isaac Hadjar">
-                <h3 class="card-title mt-3 mb-2">Isaac Hadjar</h3>
-                <p class="card-text mb-0">Red Bull · Mexico</p>
+                <img data-src="Images/hadjar.png" class="carousel-driver-image" alt="Isack Hadjar">
+                <h3 class="card-title mt-3 mb-2">Isack Hadjar</h3>
+                <p class="card-text mb-0">Red Bull · France</p>
               </article>
               <article class="card col-12 col-lg-4 carousel-card p-3">
-                <img src="Images/Alonso.png" class="carousel-driver-image" alt="Fernando Alonso">
+                <img data-src="Images/Alonso.png" class="carousel-driver-image" alt="Fernando Alonso">
                 <h3 class="card-title mt-3 mb-2">Fernando Alonso</h3>
                 <p class="card-text mb-0">Aston Martin · Spain</p>
               </article>
@@ -215,7 +208,7 @@
         <div class="carousel-indicators position-static my-3">
           <button type="button" data-bs-target="#driverCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: Lando Norris, Oscar Piastri and Charles Leclerc"></button>
           <button type="button" data-bs-target="#driverCarousel" data-bs-slide-to="1" aria-label="Slide 2: Lewis Hamilton, George Russell and Kimi Antonelli"></button>
-          <button type="button" data-bs-target="#driverCarousel" data-bs-slide-to="2" aria-label="Slide 3: Max Verstappen, Isaac Hadjar and Fernando Alonso"></button>
+          <button type="button" data-bs-target="#driverCarousel" data-bs-slide-to="2" aria-label="Slide 3: Max Verstappen, Isack Hadjar and Fernando Alonso"></button>
         </div>
         <div class="btn-group" role="group" aria-label="Carousel controls">
           <button type="button" class="btn btn-outline-light btn-sm" data-bs-target="#driverCarousel" data-bs-slide="prev" aria-label="Previous drivers">Previous</button>
@@ -228,7 +221,27 @@
 
   <footer>
     <p>Created by Asset, Ramazan</p>
-  </footer>
+  <div class="site-tools" aria-label="Website tools">
+      <button type="button" class="btn btn-outline-light" id="theme-toggle" role="switch" aria-checked="true" aria-label="Dark mode"><span class="theme-switch" aria-hidden="true"></span> Dark mode</button>
+      <button type="button" class="btn btn-danger" id="subscribe-open">Race preferences</button>
+      <a class="footer-link" href="Schedule.html">Explore the race calendar &rarr;</a>
+    </div></footer>
+<dialog id="subscribe-dialog" aria-labelledby="subscribe-title">
+    <button type="button" id="subscribe-close" class="dialog-close" aria-label="Close subscription form">&times;</button>
+    <p class="hero-eyebrow">Join the grid</p><h2 id="subscribe-title">Your race weekend</h2>
+    <p class="form-note">Save your preferences on this device. No emails are sent.</p>
+    <form id="subscribe-form" novalidate>
+      <label for="subscribe-email">Email</label>
+      <input class="form-control" id="subscribe-email" name="email" type="text" inputmode="email" autocomplete="email" aria-describedby="subscribe-error">
+      <p class="field-error" id="subscribe-error" aria-live="polite"></p>
+      <label for="preference-team">Favorite team</label>
+      <select class="form-select" id="preference-team" name="team">
+        <option value="all">All teams</option><option>Ferrari</option><option>McLaren</option><option>Mercedes</option><option>Red Bull</option><option>Aston Martin</option><option>Cadillac</option>
+      </select>
+      <button class="btn btn-danger" type="submit">Save preferences</button>
+      <p id="subscribe-status" role="status"></p>
+    </form>
+  </dialog>
 </body>
 
 </html>
