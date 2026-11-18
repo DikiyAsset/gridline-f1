@@ -171,7 +171,7 @@ function initializePreferences() {
     status.textContent = '';
     if (!valid) return input.focus();
     const saved = saveLocally('gridline.preferences', { email: input.value.trim(), team: team.value });
-    status.textContent = saved ? 'Race preferences saved on this device. No email subscription was created.' : 'Your browser could not save preferences. Please allow local storage and try again.';
+    status.textContent = saved ? 'Preferences saved.' : 'Your browser could not save preferences. Please allow local storage and try again.';
     if (saved) showNotification('Race preferences saved.');
   });
 }
@@ -199,7 +199,7 @@ function initializeContactForm() {
     select('#contact-status').textContent = '';
     if (!valid) return select('[aria-invalid="true"]', form).focus();
     const stored = saveLocally('gridline.contactDraft', { name, email, phone, message, team: select('#team').value });
-    select('#contact-status').textContent = stored ? 'Draft saved on this device. No message has been sent.' : 'Could not save your draft. Please allow local storage and try again.';
+    select('#contact-status').textContent = stored ? 'Draft saved on this device.' : 'Could not save your draft. Please allow local storage and try again.';
     if (stored) showNotification('Your F1 message draft is saved.');
   });
 }

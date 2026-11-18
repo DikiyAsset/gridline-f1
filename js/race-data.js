@@ -225,7 +225,7 @@
     const sessionsPanel = element('div', '', 'race-sessions-panel');
     const sessionsHeader = element('div', '', 'race-sessions-header');
     sessionsHeader.append(element('h4', 'Weekend sessions'));
-    sessionsHeader.append(element('p', 'Times in your local time zone'));
+    sessionsHeader.append(element('p', 'Your local time'));
     const schedule = element('ol', '', 'race-session-list');
     const sessionRows = race.sessions.map((session) => {
       const row = element('li', '', 'race-session');
@@ -248,7 +248,7 @@
       const now = Date.now();
       const clock = raceCountdown(race, now);
       values.hidden = clock.state !== 'upcoming';
-      countdownLabel.textContent = clock.state === 'upcoming' ? 'Until the scheduled Grand Prix start' :
+      countdownLabel.textContent = clock.state === 'upcoming' ? 'Until Grand Prix' :
         clock.state === 'unconfirmed' ? 'Countdown available when the start time is confirmed' :
           clock.state === 'date-passed' ? 'Scheduled race date has passed. Refresh for the next race.' :
             'Scheduled start time has passed. Refresh for the next race.';
@@ -301,7 +301,7 @@
       // Keep the last successful response even when browser storage is blocked.
       lastSuccessful = { payload, races, savedAt };
       render(races, savedAt, false);
-      status.textContent = `Calendar updated ${updatedDateTime.format(new Date(savedAt))}. Scheduled sessions, not live timing.${stored ? '' : ' Your browser could not save an offline copy.'}`;
+      status.textContent = `Calendar updated ${updatedDateTime.format(new Date(savedAt))}.${stored ? '' : ' Your browser could not save an offline copy.'}`;
     } catch (error) {
       status.classList.add('race-api-error');
       if (cache) {
