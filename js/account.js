@@ -227,7 +227,7 @@
   function updateUI() {
     const user = getCurrentUser();
     $$('[data-account-link]').forEach((link) => {
-      link.textContent = 'Profile';
+      link.textContent = 'PROFILE';
       link.href = 'Profile.html';
     });
     const member = $('#profile-member');

@@ -11,10 +11,7 @@
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const toggle = document.getElementById('theme-toggle');
-    if (toggle) {
-      toggle.setAttribute('aria-checked', String(theme === 'dark'));
-      toggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-    }
+    if (toggle) toggle.setAttribute('aria-checked', String(theme === 'dark'));
   }
 
   applyTheme(['light', 'dark'].includes(savedTheme) ? savedTheme : (systemPreference.matches ? 'dark' : 'light'));

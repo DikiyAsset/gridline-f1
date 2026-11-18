@@ -30,23 +30,20 @@ MediaQueries.html is a compatibility redirect, not a content page.
 
 1. CSS Grid/Flexbox/Bootstrap, collapsible navigation, mobile calendar cards.
 2. Existing GitHub Pages publication from `main`, root `/`; `.nojekyll` included.
-3. Persisted sun/moon switch after Contacts in the header, early application and cross-tab updates.
-4. Cinematic Ferrari homepage, graphite/white surfaces, precise red accents,
-   readable system typography, a Gridline wordmark and accessible controls.
+3. Persisted sun/moon switch after Contacts, early application and cross-tab updates.
+4. Shared F1 typography, red accents, photographs and accessible controls.
 5. Custom validation; registration/login/profile; instant driver search, saved
    query, and account-specific liked drivers.
 6. Hover feedback, FAQ transitions and reduced-motion support.
 7. Public Jolpica API: async fetch, loading, timeout, error/retry, validated
-   timestamped cache, local session times, a confirmed Grand Prix countdown and an Up next session marker.
+   timestamped cache, local session times and a confirmed Grand Prix countdown.
 8. Driver collections and race information fit the F1 fan theme.
 9. Two-speaker presentation script and backup screenshots accompany submission.
 10. Shared styles, separate scripts, local assets and focused checks.
 
 ## Code organization
 
-`css/style.css` contains base layouts; `css/visual.css` provides the shared racing
-design and header controls, while `css/home.css` styles the photographic homepage.
-`css/account.css` and
+`css/style.css` contains shared tokens/layouts. `css/account.css` and
 `css/race-data.css` style account and race components. In `js/`, `theme.js`
 initializes appearance; `script.js` handles search, FAQ, forms and existing UI;
 `drivers-data.js` holds shared metadata; `account.js` manages account validation,
@@ -73,9 +70,7 @@ Run `node --test`, then `python tests/site-audit.py`. No npm dependencies needed
 Checks cover account/like persistence and isolation, validation, API schema and
 UI loading/error/retry/cache states, and local links/assets/form dependencies.
 
-The refreshed design passed 64 browser layout checks: eight content pages at
-1440, 768, 390 and 320 pixels wide, in both themes, with a 900-pixel viewport height.
-The mobile profile was also checked at 390x844; the mobile menu remains functional.
+Browser checks: 64 layouts across eight content pages, widths 1440/768/390/320, both themes, height 900px.
 Signup, wrong-password feedback, login/profile/edit/logout, likes, search/no-results,
 contact/preferences, FAQ and carousel were checked. The real Jolpica request
 succeeded in browser. Physical devices were not tested.
@@ -91,3 +86,5 @@ succeeded in browser. Physical devices were not tested.
 Submit the project ZIP, report PDF and links TXT together. Each member submits
 their own copy in Moodle FINAL EXAM FOLDER. Rehearse for 4:30-5:00; both members
 speak. Actual presentation and Moodle submission remain team activities.
+
+This final version is based on the supplied Gridline (3).zip: its 27 original image/font/audio assets and video-homepage identity are retained. Authentication, profile/likes, custom validation and the API use the reviewed shared components.
